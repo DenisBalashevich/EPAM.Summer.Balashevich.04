@@ -8,6 +8,7 @@ namespace ExtensoinMethod
 {
     public static class DoubleExtension
     {
+        private static int bits = 8;
         public static string ToIEEE754(this double x)
         {
             StringBuilder result = new StringBuilder();
@@ -15,30 +16,20 @@ namespace ExtensoinMethod
 
             foreach (var a in bytes)
             {
-                result.Append(ToBinary(a));
+                result.Insert(0, ToBinary(a));
             }
-            return Reverse(result.ToString());
+            return result.ToString();
         }
 
         private static string ToBinary(int x)
         {
+            int lenght = Convert.ToString(x, 2).Length;
             string result = Convert.ToString(x, 2);
-            int lenght = result.Length;
-           
-            if (lenght < 8)
-                for (int i = lenght; i < 8; i++)
-                    result += '0';
-            return result;
-        }
 
-        private static string Reverse(string str)
-        {
-            StringBuilder temp = new StringBuilder();
-            for (int i = str.Length - 1; i >= 0; i--)
-            {
-                temp.Append(str[i]);
-            }
-            return temp.ToString();
+            if (lenght < bits)
+                for (int i = lenght; i < bits; i++)
+                    result = result.Insert(0, "0");
+            return result;
         }
     }
 }
