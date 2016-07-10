@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomFormat
 {
-    public class Customer
+    public class Customer : IFormattable
     {
         private readonly int CONTACT_PHONE_LENGTH = 11;
         private string contactPhone;
