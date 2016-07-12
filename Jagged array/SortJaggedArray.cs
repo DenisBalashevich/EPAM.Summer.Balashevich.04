@@ -7,27 +7,6 @@ namespace Jagged_array
     {
         public delegate int KindSortingDelegate(T[] a, T[] b);
 
-        public static T[][] SortArrayByIncrease(T[][] arr, KindSortingDelegate compare)
-        {
-            IComparer<T[]> comparer = new Adapter<T>(compare);
-            return  BubbleSort(arr,  comparer);
-        }
-
-        public static T[][] SortArrayByDecrease(T[][] arr, KindSortingDelegate compare)
-        {
-            IComparer<T[]> comparer = new Adapter<T>(compare);
-            return BubbleSort(arr,  comparer);
-        }
-
-        public static T[][] SortArrayByDecrease(T[][] arr, IComparer<T[]> comparer)
-        {
-            return BubbleSort(arr,  comparer);
-        }
-         public static T[][] SortArrayByIncrease(T[][] arr, IComparer<T[]> comparer)
-        {
-            return BubbleSort(arr, comparer);
-        }
-
         public static T[][] BubbleSort(T[][] arr, IComparer<T[]> comparer)
         {
             foreach (var a in arr)
@@ -49,6 +28,8 @@ namespace Jagged_array
             }
             return arr;
         }
+
+        public static T[][] BubbleSort(T[][] arr, KindSortingDelegate compare) => BubbleSort(arr, new Adapter<T>(compare));
 
         private static void Swap(ref T[] arr1, ref T[] arr2)
         {
