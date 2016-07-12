@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jagged_array
 {
-    public class CompareByMaxValue : IComparer
+    public class CompareByMaxValueIncrease : IComparer
     {
         public int Compare(int[] arr1, int[] arr2)
         {

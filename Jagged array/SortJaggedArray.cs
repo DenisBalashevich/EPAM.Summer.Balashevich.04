@@ -10,25 +10,25 @@ namespace Jagged_array
         public static T[][] SortArrayByIncrease(T[][] arr, KindSortingDelegate compare)
         {
             IComparer<T[]> comparer = new Adapter<T>(compare);
-            return  BubbleSort(arr, 1, comparer);
+            return  BubbleSort(arr,  comparer);
         }
 
         public static T[][] SortArrayByDecrease(T[][] arr, KindSortingDelegate compare)
         {
             IComparer<T[]> comparer = new Adapter<T>(compare);
-            return BubbleSort(arr, -1, comparer);
+            return BubbleSort(arr,  comparer);
         }
 
         public static T[][] SortArrayByDecrease(T[][] arr, IComparer<T[]> comparer)
         {
-            return BubbleSort(arr, -1, comparer);
+            return BubbleSort(arr,  comparer);
         }
          public static T[][] SortArrayByIncrease(T[][] arr, IComparer<T[]> comparer)
         {
-            return BubbleSort(arr, 1, comparer);
+            return BubbleSort(arr, comparer);
         }
 
-        public static T[][] BubbleSort(T[][] arr, int MaxMin, IComparer<T[]> comparer)
+        public static T[][] BubbleSort(T[][] arr, IComparer<T[]> comparer)
         {
             foreach (var a in arr)
             {
@@ -41,7 +41,7 @@ namespace Jagged_array
             {
                 for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (comparer.Compare(arr[i], arr[j]) == MaxMin)
+                    if (comparer.Compare(arr[i], arr[j]) == 1)
                     {
                         Swap(ref arr[i], ref arr[j]);
                     }

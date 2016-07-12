@@ -13,7 +13,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByDecreaseByMin")]
         public void SortArrayByDecreaseByMin(int[][] arr, int[][] arr2)
         {
-            CompareByMinValue a = new CompareByMinValue();
+            CompareByMinValueIncrease a = new CompareByMinValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -22,7 +22,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByIncreaseByMin")]
         public void SortArrayByIncreaseByMin(int[][] arr, int[][] arr2)
         {
-            CompareByMinValue a = new CompareByMinValue();
+            CompareByMinValueIncrease a = new CompareByMinValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -31,7 +31,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByDecreaseByMax")]
         public void SortArrayByDecreaseByMax(int[][] arr, int[][] arr2)
         {
-            CompareByMaxValue a = new CompareByMaxValue();
+            CompareByMaxValueIncrease a = new CompareByMaxValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -40,7 +40,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByIncreaseByMax")]
         public void SortArrayByIncreaseByMax(int[][] arr, int[][] arr2)
         {
-            CompareByMaxValue a = new CompareByMaxValue();
+            CompareByMaxValueIncrease a = new CompareByMaxValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -49,7 +49,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByDecreaseBySum")]
         public void SortArrayByDecreaseBySum(int[][] arr, int[][] arr2)
         {
-            CompareBySum a = new CompareBySum();
+            CompareBySumIncrease a = new CompareBySumIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -58,7 +58,7 @@ namespace JaggedArray.Tests
         [TestCaseSource("GetForSortArrayByIncreaseBySum")]
         public void SortArrayByIncreaseBySum(int[][] arr, int[][] arr2)
         {
-            CompareBySum a = new CompareBySum();
+            CompareBySumIncrease a = new CompareBySumIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
             arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
@@ -67,20 +67,28 @@ namespace JaggedArray.Tests
         {
             yield return new TestCaseData(new int[][]
                      {
-                        new int[] {-10,5,100}, new int[] {-400, 10000, 22, 11,5}, new int[] {2,1}
+                        new int[] {-10,5,100},
+                         new int[] {2,1},
+                         new int[] {-400, 10000, 22, 11,5}
                      },
                      new int[][]
                      {
-                         new int[] {2,1},new int[] {-10,5,100}, new int[] {-400, 10000, 22, 11,5}
+                         new int[] {-400, 10000, 22, 11,5},
+                          new int[] {-10,5,100},
+                         new int[] {2,1}
                      });
 
             yield return new TestCaseData(new int[][]
                          {
-                        new int[] {-10,-5,-100}, new int[] {-400, -10000, -22, -11,-5}, new int[] {-2,-1}
+                        new int[] {-10,-5,-100},
+                             new int[] {-400, -10000, -22, -11,-5},
+                             new int[] {-2,-1}
                          },
                          new int[][]
                          {
-                       new int[] {-2,-1}, new int[] {-10,-5,-100}, new int[] {-400, -10000, -22, -11,-5}
+                             new int[] {-400, -10000, -22, -11,-5},
+                             new int[] {-10,-5,-100},
+                             new int[] {-2,-1}
                          });
             yield return new TestCaseData(new int[][]
                        {
@@ -125,11 +133,15 @@ namespace JaggedArray.Tests
         {
             yield return new TestCaseData(new int[][]
                      {
-                        new int[] {-10,5,100}, new int[] {-400, 10000, 22, 11,5}, new int[] {2,1}
+                        new int[] {-10,5,100},
+                         new int[] {-400, 10000, 22, 11,5},
+                         new int[] {2,1}
                      },
                      new int[][]
                      {
-                         new int[] {-400, 10000, 22, 11,5},new int[] {-10,5,100},new int[] {2,1}
+                         new int[] {2,1},
+                         new int[] {-10,5,100},
+                         new int[] {-400, 10000, 22, 11,5}
 
                      });
 
@@ -142,7 +154,10 @@ namespace JaggedArray.Tests
                          },
                          new int[][]
                          {
-                       new int[] {-2,-1}, new int[] {-10,-5,-100}, new int[] {-400, -10000, -22, -11,-5}
+
+                             new int[] {-400, -10000, -22, -11,-5},
+                             new int[] {-10,-5,-100},
+                             new int[] {-2,-1}
                          });
             yield return new TestCaseData(new int[][]
                        {
@@ -194,9 +209,10 @@ namespace JaggedArray.Tests
                      },
                      new int[][]
                      {
-                         new int[] {-400, 10000, 22, 11,5},
+                         new int[] {2,1},
+
                          new int[] {-10,5,100},
-                         new int[] {2,1}
+                         new int[] {-400, 10000, 22, 11,5}
 
                      });
 
@@ -209,9 +225,10 @@ namespace JaggedArray.Tests
                          },
                          new int[][]
                          {
-                             new int[] {-2,-1},
+                             new int[] {-400, -10000, -22, -11,-5},
                              new int[] {-10,-5,-100},
-                             new int[] {-400, -10000, -22, -11,-5}
+                             
+                             new int[] {-2,-1},
                          });
             yield return new TestCaseData(new int[][]
                        {
