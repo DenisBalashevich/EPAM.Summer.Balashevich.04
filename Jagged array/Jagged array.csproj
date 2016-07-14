@@ -41,13 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter.cs" />
-    <Compile Include="CompareByMaxValueDecrease.cs" />
-    <Compile Include="CompareByMaxValueIncrease.cs" />
-    <Compile Include="CompareByMinValueDecrease.cs" />
-    <Compile Include="CompareByMinValueIncrease.cs" />
-    <Compile Include="CompareBySumDecrease.cs" />
-    <Compile Include="CompareBySumIncrease.cs" />
     <Compile Include="IComparer.cs" />
+    <Compile Include="JaggedArraySort.cs" />
     <Compile Include="SortJaggedArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Jagged_array
 {
-    public class SortJaggedArray<T>
+    class JaggedArraySort<T>
     {
         public delegate int KindSortingDelegate(T[] a, T[] b);
 
-        public static void BubbleSort(T[][] arr, IComparer<T[]> comparer)
+        public static void BubbleSort(T[][] arr, KindSortingDelegate comparer)
         {
             foreach (var a in arr)
             {
-                if (ReferenceEquals(arr, null))
+                if (ReferenceEquals(arr,null))
                     throw new ArgumentNullException();
             }
             if (comparer == null)
@@ -20,7 +23,7 @@ namespace Jagged_array
             {
                 for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (comparer.Compare(arr[i], arr[j]) > 0 )
+                    if (comparer(arr[i], arr[j]) > 0)
                     {
                         Swap(ref arr[i], ref arr[j]);
                     }
@@ -28,8 +31,12 @@ namespace Jagged_array
             }
         }
 
-        public static void BubbleSort(T[][] arr, KindSortingDelegate compare) => BubbleSort(arr, new Adapter<T>(compare));
-  
+        public static void BubbleSort(T[][] arr, IComparer<T[]> compare)
+        {
+            KindSortingDelegate del = compare.Compare;
+            BubbleSort(arr, del);
+        }
+
         private static void Swap(ref T[] arr1, ref T[] arr2)
         {
             var temp = arr1;

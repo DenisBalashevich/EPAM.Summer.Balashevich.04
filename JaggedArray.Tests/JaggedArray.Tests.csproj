@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareByMaxValueDecrease.cs" />
+    <Compile Include="CompareByMaxValueIncrease.cs" />
+    <Compile Include="CompareByMinValueDecrease.cs" />
+    <Compile Include="CompareByMinValueIncrease.cs" />
+    <Compile Include="CompareBySumDecrease.cs" />
+    <Compile Include="CompareBySumIncrease.cs" />
     <Compile Include="SortJaggedArrayTetsts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

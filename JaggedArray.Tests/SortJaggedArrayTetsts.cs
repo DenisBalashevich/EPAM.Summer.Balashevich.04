@@ -15,7 +15,7 @@ namespace JaggedArray.Tests
         {
             CompareByMinValueIncrease a = new CompareByMinValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
 
@@ -24,7 +24,7 @@ namespace JaggedArray.Tests
         {
             CompareByMinValueIncrease a = new CompareByMinValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
 
@@ -33,7 +33,7 @@ namespace JaggedArray.Tests
         {
             CompareByMaxValueIncrease a = new CompareByMaxValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
 
@@ -42,7 +42,7 @@ namespace JaggedArray.Tests
         {
             CompareByMaxValueIncrease a = new CompareByMaxValueIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
 
@@ -51,7 +51,7 @@ namespace JaggedArray.Tests
         {
             CompareBySumIncrease a = new CompareBySumIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByDecrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
 
@@ -60,7 +60,7 @@ namespace JaggedArray.Tests
         {
             CompareBySumIncrease a = new CompareBySumIncrease();
             var del = new SortJaggedArray<int>.KindSortingDelegate(a.Compare);
-            arr = SortJaggedArray<int>.SortArrayByIncrease(arr, del);
+            SortJaggedArray<int>.BubbleSort(arr, del);
             CollectionAssert.AreEqual(arr, arr2);
         }
         public IEnumerable<TestCaseData> GetForSortArrayByDecreaseByMin()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jagged_array
 {
-    interface IComparer
+    public interface IComparer
     {
         int Compare(int[] arr1, int[] arr2);
     }
