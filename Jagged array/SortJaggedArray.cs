@@ -16,6 +16,7 @@ namespace Jagged_array
             }
             if (ReferenceEquals(comparer, null))
                 throw new ArgumentNullException();
+
             for (int i = 0; i < arr.Length; i++)
             {
                 for (int j = i + 1; j < arr.Length; j++)
@@ -28,7 +29,12 @@ namespace Jagged_array
             }
         }
 
-        public static void BubbleSort(T[][] arr, KindSortingDelegate compare) => BubbleSort(arr, new Adapter<T>(compare));
+        public static void BubbleSort(T[][] arr, KindSortingDelegate comparer)
+        {
+            if (ReferenceEquals(comparer, null))
+                throw new ArgumentNullException();
+            BubbleSort(arr, new Adapter<T>(comparer));
+        }
   
         private static void Swap(ref T[] arr1, ref T[] arr2)
         {

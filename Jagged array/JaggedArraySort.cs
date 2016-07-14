@@ -31,9 +31,11 @@ namespace Jagged_array
             }
         }
 
-        public static void BubbleSort(T[][] arr, IComparer<T[]> compare)
+        public static void BubbleSort(T[][] arr, IComparer<T[]> comparer)
         {
-            KindSortingDelegate del = compare.Compare;
+            if (ReferenceEquals(comparer, null))
+                throw new ArgumentNullException();
+            KindSortingDelegate del = comparer.Compare;
             BubbleSort(arr, del);
         }
 
