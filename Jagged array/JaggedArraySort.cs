@@ -17,7 +17,7 @@ namespace Jagged_array
                 if (ReferenceEquals(arr,null))
                     throw new ArgumentNullException();
             }
-            if (comparer == null)
+            if (ReferenceEquals(comparer, null))
                 throw new ArgumentNullException();
             for (int i = 0; i < arr.Length; i++)
             {
